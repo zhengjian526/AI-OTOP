@@ -9,3 +9,56 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+
+# CMake build output
+build/
+
+# Kernel Module Files
+*.mod.c
+*.cmd
+.*
+!.gitignore
+*.order
+*.symtypes
+*.symvers
+
+cmake-build-debug/
+cscope.files
+tags
+build*
+arm*
+*.log
