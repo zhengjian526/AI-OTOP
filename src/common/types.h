@@ -1,5 +1,5 @@
-#ifndef OTOP_TENSOR_H
-#define OTOP_TENSOR_H
+#ifndef OTOP_TYPES_H
+#define OTOP_TYPES_H
 #include <iostream>
 namespace otop {
 enum {
@@ -74,4 +74,4 @@ enum {
 };
 
 } // namespace otop
-#endif // OTOP_TENSOR_H
+#endif // OTOP_TYPES_H
