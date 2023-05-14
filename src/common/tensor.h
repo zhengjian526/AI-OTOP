@@ -1,8 +1,8 @@
 #ifndef OTOP_TENSOR_H
 #define OTOP_TENSOR_H
+#include "types.h"
 #include <iostream>
 #include <vector>
-#include "types.h"
 namespace otop {
 
 using Shape = std::vector<uint64_t>;
