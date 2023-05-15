@@ -6,17 +6,9 @@ class Option
 private:
     /* data */
 public:
-    Option(/* args */);
-    ~Option();
+    Option(/* args */) = default;
+    ~Option() = default;
 };
-
-Option::Option(/* args */)
-{
-}
-
-Option::~Option()
-{
-}
 
 
 

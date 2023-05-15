@@ -12,11 +12,11 @@ struct TensorInfo
 {
     Shape shape;
     DataType data_type;
-    int64_t GetElemNum()
+    int64_t GetElemNum() const
     {
         return std::accumulate(shape.begin(), shape.end(), 1, std::multiplies<uint64_t>());
     }
-    int64_t GetDataSize()
+    int64_t GetDataSize() const
     {
         return GetElemNum() * GetSizeOfDataType(data_type);
     }
@@ -41,13 +41,17 @@ public:
     {
 
     }
-    int64_t GetElemNum()
+    int64_t GetElemNum() const
     {
         return tensor_info_.GetElemNum();
     }
-    int64_t GetDataSize()
+    int64_t GetDataSize() const
     {
         return tensor_info_.GetDataSize();
+    }
+    int64_t GetDim(int32_t idx) const
+    {
+        return tensor_info_.shape[idx];
     }
     template <typename T = void>
     T* GetBufferPtr() const {

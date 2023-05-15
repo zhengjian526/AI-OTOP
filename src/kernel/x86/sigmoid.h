@@ -10,7 +10,7 @@ public:
     SigmoidKernel(/* args */) = default;
     ~SigmoidKernel() = default;
     void SetAttr(const SigmoidAttr& attr);
-    void Run(const InputList& inputs, OutputList& outputs, const Option& option) override;
+    void Run(InputList inputs, OutputList outputs, const Option& option) override;
 private:
     SigmoidAttr attr_;
 };
