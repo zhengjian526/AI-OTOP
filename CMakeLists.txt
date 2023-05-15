@@ -12,6 +12,8 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
+find_package(OpenMP)
+
 set(BUILD_UNIT_TESTS ON)
 
 file(GLOB_RECURSE OTOP_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc)

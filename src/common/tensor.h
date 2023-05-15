@@ -32,13 +32,12 @@ struct TensorInfo
 };
 
 
-template <typename T>
 class Tensor
 {
 public:
     Tensor() = default;
     ~Tensor() = default;
-    Tensor(T* addr, const TensorInfo& tensor_info) : addr_(addr), tensor_info_(tensor_info)
+    Tensor(void* addr, const TensorInfo& tensor_info) : addr_(addr), tensor_info_(tensor_info)
     {
 
     }
@@ -50,13 +49,13 @@ public:
     {
         return tensor_info_.GetDataSize();
     }
-    T* GetAddr()
-    {
-        return addr_;
+    template <typename T = void>
+    T* GetBufferPtr() const {
+        return static_cast<T*>(addr_);
     }
 private:
     TensorInfo tensor_info_;
-    T* addr_;
+    void* addr_;
 };
 
 
