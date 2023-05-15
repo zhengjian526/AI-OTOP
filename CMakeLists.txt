@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(OTOP)
 
 # Compile Standard
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 message(STATUS "CXX Standard: ${CMAKE_CXX_STANDARD}")
 

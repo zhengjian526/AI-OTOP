@@ -1,5 +1,5 @@
-#ifndef OTOP_TENSOR_H
-#define OTOP_TENSOR_H
+#ifndef OTOP_SRC_COMMON_GEN_RANDOM_H
+#define OTOP_SRC_COMMON_GEN_RANDOM_H
 #include <random>
 #include <vector>
 namespace otop {
@@ -14,4 +14,4 @@ void GenRandTensor(T *buffer, const float &min, const float &max,
   return;
 }
 } // namespace otop
-#endif // OTOP_TENSOR_H
+#endif // OTOP_SRC_COMMON_GEN_RANDOM_H

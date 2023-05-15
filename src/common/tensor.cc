@@ -2,7 +2,7 @@
 
 namespace otop {
 
-Tensor::Tensor() = default;
-Tensor::~Tensor() = default;
+// Tensor::Tensor() = default;
+// Tensor::~Tensor() = default;
 
 } // namespace otop
