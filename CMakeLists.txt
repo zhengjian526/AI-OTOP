@@ -15,6 +15,7 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 find_package(OpenMP)
 
 set(BUILD_UNIT_TESTS ON)
+set(BUILD_TOOLS ON)
 
 file(GLOB_RECURSE OTOP_SRC_NATIVE 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/common/*.cc
@@ -37,4 +38,7 @@ target_include_directories(otop_x86_static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/s
 
 if (BUILD_UNIT_TESTS)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
+endif ()
+if (BUILD_TOOLS)
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tools)
 endif ()

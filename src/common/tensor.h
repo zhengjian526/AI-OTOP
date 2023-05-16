@@ -20,7 +20,7 @@ struct TensorInfo
     {
         return GetElemNum() * GetSizeOfDataType(data_type);
     }
-    void Print()
+    void PrintInfo()
     {
         std::cout << "shape: " << "[";
         for(const auto& ii : shape){

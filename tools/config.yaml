@@ -1,0 +1,4 @@
+tensor:
+    data_type: 6   # 6 is the value of data type float32
+    shape: [1, 10, 100, 100]
+    range: [1, 100]
