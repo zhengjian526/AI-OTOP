@@ -11,7 +11,7 @@ using namespace otop;
 
 TEST(OTOPTest, RandomTest) {
   Option option;
-  TensorInfo tensor_info {{1, 100, 1000, 1000}, DATATYPE_FLOAT32};
+  TensorInfo tensor_info {{1, 10, 100, 100}, DATATYPE_FLOAT32};
   uint64_t size = tensor_info.GetElemNum();
   std::vector<float> buffer0(size, 0);
   std::vector<float> buffer1(size, 0);
@@ -26,7 +26,7 @@ TEST(OTOPTest, RandomTest) {
   KernelRuntime runtime;
   runtime.SetKernel(&sk);
   runtime.Run(l1, l2, option);
-
+  output_tensor.SaveToFile("sigmoid");
 }
 
 int main(int argc, char **argv) {

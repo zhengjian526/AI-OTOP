@@ -27,7 +27,10 @@ file(GLOB_RECURSE OTOP_SRC_X86
     ${CMAKE_CURRENT_SOURCE_DIR}/src/kernel/x86/*.cc
 )
 add_library(otop_native_static STATIC ${OTOP_SRC_NATIVE})
+target_link_libraries(otop_native_static OpenMP::OpenMP_CXX)
 add_library(otop_x86_static STATIC ${OTOP_SRC_X86})
+target_link_libraries(otop_x86_static OpenMP::OpenMP_CXX)
+
 
 target_include_directories(otop_native_static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(otop_x86_static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)

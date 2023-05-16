@@ -13,7 +13,7 @@ void SigmoidKernel::Run(const InputList& inputs, OutputList& outputs, const Opti
     const int64_t w           = inputs[0]->GetDim(2);
     const int64_t ch          = inputs[0]->GetDim(3);
 
-    #pragma omp parallel for num_threads(opt.num_threads)
+    #pragma omp parallel for
     for (int q = 0; q < h * w; q++)
     {
         float* ptr = outputs[0]->GetBufferPtr<float>() + q * ch;

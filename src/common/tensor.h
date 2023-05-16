@@ -57,6 +57,7 @@ public:
     T* GetBufferPtr() const {
         return static_cast<T*>(addr_);
     }
+    void SaveToFile(std::string file_name);
 private:
     TensorInfo tensor_info_;
     void* addr_;
