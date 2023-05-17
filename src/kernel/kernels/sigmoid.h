@@ -1,6 +1,6 @@
 #ifndef OTOP_KERNEL_SIGMOID_H
 #define OTOP_KERNEL_SIGMOID_H
-#include "kernel/kernel.h"
+#include "kernel/kernels/kernel.h"
 #include "common/attr.h"
 namespace otop {
 
@@ -10,7 +10,10 @@ public:
     SigmoidKernel(/* args */) = default;
     ~SigmoidKernel() = default;
     void SetAttr(const SigmoidAttr& attr);
-    void Run(const InputList& inputs, OutputList& outputs, const Option& option) override;
+private:
+    void RunNative(const InputList& inputs, OutputList& outputs, const Option& option);
+    void RunSSE(const InputList& inputs, OutputList& outputs, const Option& option);
+    void RunFMA(const InputList& inputs, OutputList& outputs, const Option& option);
 private:
     SigmoidAttr attr_;
 };

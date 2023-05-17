@@ -13,7 +13,7 @@ target_link_directories(gen_random_input PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../thirdlib/yaml-cpp/lib
     )
 
-target_link_libraries(gen_random_input PRIVATE otop_native_static yaml-cpp)
+target_link_libraries(gen_random_input PRIVATE otop_static yaml-cpp)
 
 
 

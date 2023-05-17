@@ -1,6 +1,6 @@
 #ifndef OTOP_SRC_RUNTIME_KERNEL_RUNTIME_H
 #define OTOP_SRC_RUNTIME_KERNEL_RUNTIME_H
-#include "kernel/kernel.h"
+#include "kernel/kernels/kernel.h"
 #include <chrono>
 namespace otop {
 class KernelRuntime

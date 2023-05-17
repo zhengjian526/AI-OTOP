@@ -1,0 +1,16 @@
+# option(USE_SSE "=== use sse ===" OFF)
+# set(USE_FMA ON)
+# if (USE_SSE)
+#     message(STATUS "USE_SSE : ${USE_SSE}")
+#     add_definitions(__OTOP_USE_SSE__)
+# endif()
+
+# option(USE_FMA "=== use fma ===" OFF)
+# if (USE_FMA)
+#     message(STATUS "USE_FMA : ${USE_FMA}")
+#     add_definitions(__OTOP_USE_FMA__)
+# endif()
+
+set(FMA_ENABLED_FLAGS "-mfma -mavx2")
+set(SSE_ENABLED_FLAGS "-msse -msse2 -msse3 -msse4.1")
+set(AVX512_ENABLED_FLAGS "-mavx512f")

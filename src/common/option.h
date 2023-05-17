@@ -1,13 +1,14 @@
 #ifndef OTOP_COMMON_OPTION_H
 #define OTOP_COMMON_OPTION_H
 namespace otop {
-class Option
+struct Option
 {
-private:
-    /* data */
-public:
-    Option(/* args */) = default;
-    ~Option() = default;
+    enum class SimdMode {
+        NATIVE     = 0,
+        SSE        = 1,
+        FMA
+    };
+    SimdMode simd_mode = SimdMode::NATIVE;
 };
 
 

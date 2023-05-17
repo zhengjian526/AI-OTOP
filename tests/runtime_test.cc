@@ -1,16 +1,19 @@
 #include "common/gen_random.h"
 #include "common/tensor.h"
 #include "common/option.h"
-#include "kernel/kernel.h"
+#include "kernel/kernels/kernel.h"
 #include "runtime/kernel_runtime.h"
-#include "kernel/native/sigmoid.h"
+#include "kernel/kernels/sigmoid.h"
 #include "gtest/gtest.h"
-
+#include "yaml-cpp/yaml.h"
 using namespace otop;
 
-
+const std::string CONF = "config.yaml";
 TEST(OTOPTest, RandomTest) {
+  YAML::Node conf = YAML::LoadFile(CONF);
   Option option;
+  option.simd_mode = static_cast<Option::SimdMode>(conf["option"]["simd_mode"].as<uint32_t>());
+  std::cout << "1111: " << (int32_t)option.simd_mode << std::endl;
   TensorInfo tensor_info {{1, 10, 100, 100}, DATATYPE_FLOAT32};
   uint64_t size = tensor_info.GetElemNum();
   std::vector<float> buffer0(size, 0);

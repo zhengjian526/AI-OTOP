@@ -1,9 +1,9 @@
 #include "common/gen_random.h"
 #include "common/tensor.h"
 #include "common/option.h"
-#include "kernel/kernel.h"
+#include "kernel/kernels/kernel.h"
 #include "runtime/kernel_runtime.h"
-#include "kernel/native/sigmoid.h"
+#include "kernel/kernels/sigmoid.h"
 #include "yaml-cpp/yaml.h"
 #include <string.h>
 

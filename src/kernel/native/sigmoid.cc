@@ -1,19 +1,14 @@
-#include "kernel/native/sigmoid.h"
+#include "kernel/kernels/sigmoid.h"
 #include <math.h>
 namespace otop {
-void SigmoidKernel::SetAttr(const SigmoidAttr& attr)
-{
-    attr_ = attr;
-    return;
-}
-void SigmoidKernel::Run(const InputList& inputs, OutputList& outputs, const Option& option)
+void SigmoidKernel::RunNative(const InputList& inputs, OutputList& outputs, const Option& option)
 {
     const int64_t n_elem      = inputs[0]->GetElemNum();
     const int64_t h           = inputs[0]->GetDim(1);
     const int64_t w           = inputs[0]->GetDim(2);
     const int64_t ch          = inputs[0]->GetDim(3);
 
-    #pragma omp parallel for
+    #pragma omp parallel for num_threads(4)
     for (int q = 0; q < h * w; q++)
     {
         float* ptr = outputs[0]->GetBufferPtr<float>() + q * ch;

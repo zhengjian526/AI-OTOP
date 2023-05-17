@@ -1,6 +1,3 @@
-#include "kernel/native/sigmoid.h"
-#include "common/math.h"
-#include <math.h>
 #include <nmmintrin.h>
 namespace otop {
 static inline __m128 _sse_sigmoid_ps(const __m128 var)
@@ -37,32 +34,5 @@ static inline __m128 _sse_sigmoid_ps(const __m128 var)
     __m128 dst = _mm_add_ps(_mm_div_ps(p, q), _mm_set1_ps(0.5f));
     return dst;
 }
-void SigmoidKernel::SetAttr(const SigmoidAttr& attr)
-{
-    attr_ = attr;
-    return;
-}
-void SigmoidKernel::Run(const InputList& inputs, OutputList& outputs, const Option& option)
-{
-    const int64_t n_elem      = inputs[0]->GetElemNum();
-    const int64_t unroll_n    = 16;
-    const int64_t unroll_body = round(n_elem, unroll_n);
-    float* x = inputs[0]->GetBufferPtr<float>();
-    float* y = outputs[0]->GetBufferPtr<float>();
-    #pragma omp parallel for
-    for (int64_t i = 0; i < unroll_body; i += unroll_n) {
-        __m128 src0 = _mm_loadu_ps(x + i + 0);
-        __m128 src1 = _mm_loadu_ps(x + i + 4);
-        __m128 src2 = _mm_loadu_ps(x + i + 8);
-        __m128 src3 = _mm_loadu_ps(x + i + 12);
-        _mm_storeu_ps(y + i + 0, _sse_sigmoid_ps(src0));
-        _mm_storeu_ps(y + i + 4, _sse_sigmoid_ps(src1));
-        _mm_storeu_ps(y + i + 8, _sse_sigmoid_ps(src2));
-        _mm_storeu_ps(y + i + 12, _sse_sigmoid_ps(src3));
-    }
-    for (int64_t i = unroll_body; i < n_elem; ++i) {
-        y[i] = 1.0f / (expf(-x[i]) + 1.0f);
-    }
-    return;
-}
 } //namespace otop
+
