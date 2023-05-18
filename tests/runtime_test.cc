@@ -31,7 +31,14 @@ TEST(OTOPTest, RandomTest) {
   runtime.Run(l1, l2, option);
   output_tensor.SaveToFile("sigmoid");
 }
-
+TEST(OTOPTest, TensorFromFileTest) {
+  TensorInfo tensor_info {{1, 10, 100, 100}, DATATYPE_FLOAT32};
+  std::vector<float> buffer(tensor_info.GetDataSize(), 0);
+  // Tensor tensor(buffer.data(), tensor_info);
+  Tensor tensor(nullptr, tensor_info);
+  bool flag = tensor.FromFile("/workspace/tools/AI-OTOP/build/tests/res_data/sigmoid.bin");
+  EXPECT_EQ(flag, true);
+}
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

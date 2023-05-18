@@ -8,7 +8,7 @@ void SigmoidKernel::RunNative(const InputList& inputs, OutputList& outputs, cons
     const int64_t w           = inputs[0]->GetDim(2);
     const int64_t ch          = inputs[0]->GetDim(3);
 
-    #pragma omp parallel for num_threads(4)
+    #pragma omp parallel for num_threads(CORES_PER_SOCKET)
     for (int q = 0; q < h * w; q++)
     {
         float* ptr = outputs[0]->GetBufferPtr<float>() + q * ch;

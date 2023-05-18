@@ -2,6 +2,7 @@
 #define OTOP_KERNEL_SIGMOID_H
 #include "kernel/kernels/kernel.h"
 #include "common/attr.h"
+#include "common/config.h"
 namespace otop {
 
 class SigmoidKernel : public Kernel

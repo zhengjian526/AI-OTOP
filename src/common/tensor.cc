@@ -23,5 +23,22 @@ void Tensor::SaveToFile(std::string file_name)
     DumpData(path, addr_, GetDataSize());
     return;
 }
+bool Tensor::FromFile(std::string file_name)
+{
+    CHECK_NOTNULL(addr_);
+    std::ifstream fin(file_name.c_str(), std::ios_base::in | std::ios_base::binary);
+    if (fin.is_open() && !fin.eof()) {
+        if(fin.read((char*)addr_, GetDataSize())) {
+            std::cout << file_name << " read successfully\n";
+        }
+        fin.close();
+        return true;
+    }
+    else {
+        std::cout << file_name << " read failed\n";
+        return false;
+    }
+    return false;
+}
 
 } // namespace otop

@@ -17,7 +17,7 @@ void SigmoidKernel::RunSSE(const InputList& inputs, OutputList& outputs, const O
     const int64_t unroll_body = round(n_elem, unroll_n);
     float* x = inputs[0]->GetBufferPtr<float>();
     float* y = outputs[0]->GetBufferPtr<float>();
-    #pragma omp parallel for num_threads(4)
+    #pragma omp parallel for num_threads(CORES_PER_SOCKET)
     for (int64_t i = 0; i < unroll_body; i += unroll_n) {
         __m128 src0 = _mm_loadu_ps(x + i + 0);
         __m128 src1 = _mm_loadu_ps(x + i + 4);
@@ -41,7 +41,7 @@ void SigmoidKernel::RunFMA(const InputList& inputs, OutputList& outputs, const O
     float* x = inputs[0]->GetBufferPtr<float>();
     float* y = outputs[0]->GetBufferPtr<float>();
 
-    #pragma omp parallel for num_threads(4)
+    #pragma omp parallel for num_threads(CORES_PER_SOCKET)
     for (int64_t i = 0; i < unroll_body; i += unroll_n) {
         __m256 src0, src1, src2, src3;
         src0 = _mm256_loadu_ps(x + i + 0);
