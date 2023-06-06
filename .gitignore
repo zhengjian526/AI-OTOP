@@ -22,7 +22,6 @@ _deps
 
 # Libraries
 *.lib
-*.a
 *.la
 *.lo
 
